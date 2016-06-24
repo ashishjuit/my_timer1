@@ -19,6 +19,7 @@ $(document).ready(function(){
     snd.play();
     clearTimeout(countdown);
     clearTimeout(countdown1);
+    start.removeAttr('disabled');
   }
 
 
@@ -29,6 +30,7 @@ $(document).ready(function(){
   }
 
   function startReverseCountdown(){
+            start.attr('disabled', true);
            snd.play();
           countdown = setInterval(function(){
             audio.play();
