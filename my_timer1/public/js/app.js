@@ -23,11 +23,9 @@ $(document).ready(function(){
 
 
   function breakOn(){
-    minutes.text('05');
-    seconds.text('00');
+    minutes.text('00');
+    seconds.text('10');
     startCountdown();
-
-
   }
 
   function startReverseCountdown(){
@@ -38,7 +36,6 @@ $(document).ready(function(){
       var minutesVal=+minutes.text();
 
       if(minutesVal>=25){
-        breakBtn.removeClass('disabled');
         breakBtn.removeAttr('disabled');
       }
       if(secondsVal<59){
@@ -67,14 +64,18 @@ $(document).ready(function(){
 
   function startCountdown(){
            snd.play();
+           pauseBtn.attr('disabled', true);
       clearInterval(countdown);
-      // breakBtn.addClass('disabled');
-      // breakBtn.addAttr('disabled');
             countdown1 = setInterval(function(){
+              clearInterval(countdown);
         audio.play();
       var secondsVal1=+seconds.text();
       var minutesVal1=+minutes.text();
       if(secondsVal1===0 && minutesVal1===0){
+        clearInterval(countdown1);
+        pauseBtn.removeAttr('disabled');
+        breakBtn.attr('disabled', true);
+        startReverseCountdown();
         return;
       }
 
